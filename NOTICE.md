@@ -1,6 +1,6 @@
 # Notices and source lineage
 
-OLCRTC Android is an unofficial derivative distribution.
+Proxy-box is an unofficial derivative distribution.
 
 ## Android application
 

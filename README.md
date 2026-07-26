@@ -1,8 +1,8 @@
-# OLCRTC Android
+# Proxy-box
 
 Unofficial Android client with OLCRTC carrier rotation, based on SFA.
 
-This is not an official SagerNet, sing-box, sing-box-extended, OLCRTC, or LiveKit release. The application is published under the separate name **OLCRTC Android** to avoid implying association with the upstream SFA application.
+This is not an official SagerNet, sing-box, sing-box-extended, OLCRTC, or LiveKit release. The application is published under the separate name **Proxy-box** to avoid implying association with the upstream SFA application.
 
 ## Project relationship
 

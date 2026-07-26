@@ -1,8 +1,8 @@
-# OLCRTC Android release
+# Proxy-box release
 
 ## Scope
 
-Version `1.13.14-olcrtc.1` is a personal arm64 Android release of the SFA user interface with an OLCRTC-enabled sing-box-extended core.
+Version `1.13.14-olcrtc.2` is a personal arm64 Android release of the SFA user interface with an OLCRTC-enabled sing-box-extended core.
 
 The rotation implementation uses two ordered rooms, make-before-break carriers, active/prepared/draining states, per-carrier recovery, and epoch plus room-session identifiers. Existing TCP connections are not migrated. New connections use the active carrier.
 
@@ -18,7 +18,7 @@ Do not enable IPv6 or `strict_route` on client networks without IPv6. The public
 
 This APK uses the following corresponding sources:
 
-- Android UI: this repository, tag `v1.13.14-olcrtc.1`.
+- Android UI: this repository, tag `v1.13.14-olcrtc.2`.
 - Core: `Shtorm-glitch/sing-box-extended`, tag `v1.13.11-extended-2.1.0-olcrtc.1`.
 - OLCRTC: `Shtorm-glitch/olcrtc`, tag `v0.0.1-olcrtc.1`.
 - LiveKit SDK: `Shtorm-glitch/server-sdk-go`, tag `v2.16.4-olcrtc.1`.
@@ -38,8 +38,8 @@ Reproduction with a different private signing key produces a cryptographically d
 ## Release verification
 
 - Android package: `io.nekohasekai.sfa`.
-- Version code: `686`.
-- Version name: `1.13.14-olcrtc.1`.
+- Version code: `687`.
+- Version name: `1.13.14-olcrtc.2`.
 - ABI: arm64-v8a only.
 - Build type: release, R8/minification enabled, not debuggable.
 - Expected signing certificate SHA-256: `C8:F8:40:52:25:A2:0B:92:E5:03:61:B4:C8:90:FA:01:6F:1C:49:83:55:C0:E8:49:D1:0C:65:D9:BF:54:88:9D`.
