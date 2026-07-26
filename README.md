@@ -1,32 +1,23 @@
-# SFA
+# OLCRTC Android
 
-Experimental Android client for sing-box, the universal proxy platform.
+Unofficial Android client with OLCRTC carrier rotation, based on SFA.
 
-## Documentation
+This is not an official SagerNet, sing-box, sing-box-extended, OLCRTC, or LiveKit release. The application is published under the separate name **OLCRTC Android** to avoid implying association with the upstream SFA application.
 
-https://sing-box.sagernet.org/installation/clients/sfa/
+## Project relationship
 
-## License
+- [SagerNet/sing-box-for-android](https://github.com/SagerNet/sing-box-for-android) is the original Android application and direct UI base.
+- [SagerNet/sing-box](https://github.com/SagerNet/sing-box) is the original sing-box project.
+- [shtorm-7/sing-box-extended](https://github.com/shtorm-7/sing-box-extended) is the extended sing-box fork used as the direct core base.
+- [Shtorm-glitch/sing-box-extended](https://github.com/Shtorm-glitch/sing-box-extended), tag `v1.13.11-extended-2.1.0-olcrtc.1`, contains the OLCRTC endpoint, outbound, and autonomous rotation logic packaged by this app.
+- [openlibrecommunity/olcrtc](https://github.com/openlibrecommunity/olcrtc) is the original OLCRTC project.
+- [Shtorm-glitch/olcrtc](https://github.com/Shtorm-glitch/olcrtc), tag `v0.0.1-olcrtc.1`, contains the OLCRTC carrier extensions used by the core.
+- [Shtorm-glitch/server-sdk-go](https://github.com/Shtorm-glitch/server-sdk-go), tag `v2.16.4-olcrtc.1`, contains the minimal LiveKit SDK additions required by rotation.
 
-```
-Copyright (C) 2022 by nekohasekai <contact-sagernet@sekai.icu>
+See [OLCRTC release documentation](docs/OLCRTC_RELEASE.md) for architecture, configuration safety, build instructions, verification, and known limitations.
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+## License and attribution
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+The Android application remains licensed under GPLv3 with the additional upstream naming and association condition in [LICENSE](LICENSE). See [NOTICE.md](NOTICE.md) for source lineage and attribution.
 
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-In addition, no derivative work may use the name or imply association
-with this application without prior consent.
-```
-
-Under the license, that forks of the app are not allowed to be listed on F-Droid or other app stores
-under the original name.
+Copyright for upstream components remains with their respective authors and contributors.
