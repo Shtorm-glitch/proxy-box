@@ -2,11 +2,11 @@
 
 ## Scope
 
-Version `1.13.14-olcrtc.2` is a personal arm64 Android release of the SFA user interface with an OLCRTC-enabled sing-box-extended core.
+Version `1.13.14-olcrtc.3` is a personal arm64 Android release of the SFA user interface with an OLCRTC-enabled sing-box-extended core.
 
 The rotation implementation uses two ordered rooms, make-before-break carriers, active/prepared/draining states, per-carrier recovery, and epoch plus room-session identifiers. Existing TCP connections are not migrated. New connections use the active carrier.
 
-The server operates autonomously. NAS is only the room owner and does not send room status to the server. After owner loss, the server waits 5 seconds before trying the next room. A successful server carrier in that room triggers transition of the old room to DRAINING within 10 seconds. Existing connections remain supported for a randomized 12 to 17 minute drain timeout. If the next room is unavailable, the old room remains active for new and existing connections and retries occur after randomized delays from 2 to 7 minutes.
+The server operates autonomously. NAS is only the room owner and does not send room status to the server. After owner loss, the server waits 5 seconds before trying the next room. A successful server carrier in that room triggers transition of the old room to DRAINING within 10 seconds. Existing connections remain supported for a randomized 2 to 30 second drain timeout. If the next room is unavailable, the old room remains active for new and existing connections and retries occur after randomized delays from 2 to 7 minutes.
 
 ## Android configuration safety
 
@@ -18,9 +18,9 @@ Do not enable IPv6 or `strict_route` on client networks without IPv6. The public
 
 This APK uses the following corresponding sources:
 
-- Android UI: this repository, tag `v1.13.14-olcrtc.2`.
-- Core: `Shtorm-glitch/sing-box-extended`, tag `v1.13.11-extended-2.1.0-olcrtc.1`.
-- OLCRTC: `Shtorm-glitch/olcrtc`, tag `v0.0.1-olcrtc.1`.
+- Android UI: this repository, tag `v1.13.14-olcrtc.3`.
+- Core: `Shtorm-glitch/sing-box-extended`, tag `v1.13.11-extended-2.1.0-olcrtc.2`.
+- OLCRTC: `Shtorm-glitch/olcrtc`, tag `v0.0.1-olcrtc.2`.
 - LiveKit SDK: `Shtorm-glitch/server-sdk-go`, tag `v2.16.4-olcrtc.1`.
 
 The direct bases are `SagerNet/sing-box-for-android`, `shtorm-7/sing-box-extended`, `SagerNet/sing-box`, `openlibrecommunity/olcrtc`, and `livekit/server-sdk-go`.
@@ -38,8 +38,8 @@ Reproduction with a different private signing key produces a cryptographically d
 ## Release verification
 
 - Android package: `io.nekohasekai.sfa`.
-- Version code: `687`.
-- Version name: `1.13.14-olcrtc.2`.
+- Version code: `688`.
+- Version name: `1.13.14-olcrtc.3`.
 - ABI: arm64-v8a only.
 - Build type: release, R8/minification enabled, not debuggable.
 - Expected signing certificate SHA-256: `C8:F8:40:52:25:A2:0B:92:E5:03:61:B4:C8:90:FA:01:6F:1C:49:83:55:C0:E8:49:D1:0C:65:D9:BF:54:88:9D`.
@@ -55,6 +55,10 @@ Reproduction with a different private signing key produces a cryptographically d
 
 The inherited Android fork currently reports pre-existing lint failures in Compose resource access, translations, and privileged/Xposed support. No lint error points to OLCRTC integration. This remains a known limitation for a future public-store-quality build.
 
-## Changes after this release
+## Changes in this release
 
-The Linux server development branch changes the default drain timeout from 12 to 17 minutes to a randomized 2 to 30 seconds. It also adds ordered cold-start probing: an explicit first-room connection failure starts an immediate second-room probe. A successfully joined first room remains temporarily active during a 10-second owner observation window; no owner then enters the existing owner-loss path and its 5-second grace period. These changes are not part of the immutable `v1.13.14-olcrtc.2` Android artifact and require Linux validation before the next Android release.
+- The default drain timeout is randomized from 2 to 30 seconds.
+- Ordered cold-start probing immediately tries the second room after an explicit first-room failure.
+- A successfully joined first room gets a 10-second owner observation window before the existing owner-loss path starts.
+- VP8Channel uses the unique channel ID as its binding token to isolate overlapping sessions in the same room.
+- Android interface enumeration uses `getifaddrs` and supports Android 11+ without relying on blocked netlink access.
