@@ -16,6 +16,10 @@ This is not an official SagerNet, sing-box, sing-box-extended, OLCRTC, or LiveKi
 
 See [OLCRTC release documentation](docs/OLCRTC_RELEASE.md) for architecture, configuration safety, build instructions, verification, and known limitations.
 
+## Current development status
+
+The Linux server development branch now uses a randomized 2 to 30 second drain timeout by default. On autonomous cold start, it checks the configured rooms in order: if no owner appears in the first room before `connect_wait`, it prepares the second room. An owner appearing in the first room cancels that probe. This cold-start change is not included in the published `v1.13.14-olcrtc.2` Android APK and will be included in a later release after Linux validation.
+
 ## License and attribution
 
 The Android application remains licensed under GPLv3 with the additional upstream naming and association condition in [LICENSE](LICENSE). See [NOTICE.md](NOTICE.md) for source lineage and attribution.

@@ -54,3 +54,7 @@ Reproduction with a different private signing key produces a cryptographically d
 - Installation, profile import, VPN start, YouTube traffic, and VPN stop/start smoke tests passed on Android.
 
 The inherited Android fork currently reports pre-existing lint failures in Compose resource access, translations, and privileged/Xposed support. No lint error points to OLCRTC integration. This remains a known limitation for a future public-store-quality build.
+
+## Changes after this release
+
+The Linux server development branch changes the default drain timeout from 12 to 17 minutes to a randomized 2 to 30 seconds. It also adds ordered cold-start probing: if the owner does not appear in the first configured room before `connect_wait`, the server prepares the second room. Owner presence in the first room cancels the probe. These changes are not part of the immutable `v1.13.14-olcrtc.2` Android artifact and require Linux validation before the next Android release.
