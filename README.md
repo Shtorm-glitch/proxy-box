@@ -18,7 +18,7 @@ See [OLCRTC release documentation](docs/OLCRTC_RELEASE.md) for architecture, con
 
 ## Current development status
 
-The Linux server development branch now uses a randomized 2 to 30 second drain timeout by default. On autonomous cold start, it checks the configured rooms in order: if no owner appears in the first room before `connect_wait`, it prepares the second room. An owner appearing in the first room cancels that probe. This cold-start change is not included in the published `v1.13.14-olcrtc.2` Android APK and will be included in a later release after Linux validation.
+The Linux server development branch now uses a randomized 2 to 30 second drain timeout by default. On autonomous cold start, an explicit failure in the first room starts an immediate probe of the second room. A successfully joined first room remains temporarily active while owner presence is observed for 10 seconds; if no owner appears, the existing owner-loss path probes the next room after its 5-second grace period. This cold-start change is not included in the published `v1.13.14-olcrtc.2` Android APK and will be included in a later release after Linux validation.
 
 ## License and attribution
 

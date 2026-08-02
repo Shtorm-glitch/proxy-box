@@ -57,4 +57,4 @@ The inherited Android fork currently reports pre-existing lint failures in Compo
 
 ## Changes after this release
 
-The Linux server development branch changes the default drain timeout from 12 to 17 minutes to a randomized 2 to 30 seconds. It also adds ordered cold-start probing: if the owner does not appear in the first configured room before `connect_wait`, the server prepares the second room. Owner presence in the first room cancels the probe. These changes are not part of the immutable `v1.13.14-olcrtc.2` Android artifact and require Linux validation before the next Android release.
+The Linux server development branch changes the default drain timeout from 12 to 17 minutes to a randomized 2 to 30 seconds. It also adds ordered cold-start probing: an explicit first-room connection failure starts an immediate second-room probe. A successfully joined first room remains temporarily active during a 10-second owner observation window; no owner then enters the existing owner-loss path and its 5-second grace period. These changes are not part of the immutable `v1.13.14-olcrtc.2` Android artifact and require Linux validation before the next Android release.
